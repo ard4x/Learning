@@ -1,0 +1,42 @@
+<div class="popup_wrapper">
+    <div class="popup_container">
+        <h4 class="content-subhead">New post</h4>
+        Is valid - {{addPostForm.$valid}}
+        <form class="pure-form pure-form-aligned" name="addPostForm" ng-submit="addPostForm.$valid && blogPost.addPost()" novalidate>
+            <fieldset>
+                <div class="pure-control-group">
+                    <label>Author</label>
+                    <input ng-model="blogPost.newPost.author" type="text" placeholder="Author" class="form-field" required>
+                </div>
+
+                <div class="pure-control-group">
+                    <label>Avatar</label>
+                    <input ng-model="blogPost.newPost.avatar" type="text" placeholder="path to image" class="form-field">
+                </div>
+
+                <div class="pure-control-group">
+                    <label>Article title</label>
+                    <input  ng-model="blogPost.newPost.title" type="text" placeholder="title" class="form-field" required>
+                </div>
+
+                <div class="pure-control-group">
+                    <label>Labels / tags</label>
+                    <input  ng-model="blogPost.newPost.labels" placeholder="Enter tags, use comma to separate" class="form-field">
+                </div>
+
+                <div class="pure-control-group">
+                    <label>Article message</label>
+                    <textarea required ng-model="blogPost.newPost.body" id="aligned-foo" type="text" placeholder="Enter something here..." class="form-field"></textarea>
+                </div>
+
+                <div class="pure-controls">
+                    <button ng-click="blogPost.popupAction('hide')" class="pure-button pure-button-secondary">Cancel</button>
+                    <button type="submit" class="pure-button pure-button-primary">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <span class="popup_close" ng-click="blogPost.popupAction('hide')">&#10006;</span>
+    </div>
+
+</div><!-- /.modal -->

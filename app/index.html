@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body ng-app="blog" ng-controller="PostsCtrl as posts">
+<body ng-app="blog" ng-controller="BlogCtrl as blogPost">
     <div id="layout" class="pure-g">
         <div class="sidebar pure-u-1 pure-u-md-1-4">
             <div class="header">
@@ -36,7 +36,7 @@
                     <ul class="nav-list">
                         <li class="nav-item">
                             <a class="pure-button" href="http://purecss.io">Pure</a>
-                            <a class="pure-button" href ng-click="posts.popupAction('show')">Add post</a>
+                            <a class="pure-button" href ng-click="blogPost.popupAction('show')">Add post</a>
                         </li>
                     </ul>
                 </nav>
@@ -47,30 +47,11 @@
             <div>
                 <!-- A wrapper for all the blog posts -->
                 <div class="posts">
-                    <h1 class="content-subhead">Pinned Post ({{posts.items.length}})</h1>
+                    <h1 class="content-subhead">Pinned Post ({{blogPost.items.length}})</h1>
 
-                    <!-- A single blog post -->
-                    <section class="post" ng-repeat="post in posts.items">
-                        <header class="post-header">
-                            <img class="post-avatar" alt="Tilo Mitra&#x27;s avatar" height="48" width="48" ng-src="{{post.avatar}}">
 
-                            <h2 class="post-title">{{post.title}}</h2>
+                    <blog-post></blog-post>
 
-                            <p class="post-meta">
-                                By <a href="#" class="post-author">{{post.author}}</a>
-                                <span ng-show="post.labels.length">under
-                                    <span ng-repeat="label in post.labels">
-                                        <a class="post-category post-category-pure" href="#">{{label}}</a>
-                                    </span>
-                                </span>
-                                <span ng-show="post.date">{{post.date | date}}</span>
-                            </p>
-                        </header>
-
-                        <div class="post-description">
-                            <p>{{post.body}}</p>
-                        </div>
-                    </section>
                 </div>
 
                 <div class="footer">
@@ -86,48 +67,7 @@
         </div>
     </div>
 
-    <div class="popup_wrapper" ng-show="posts.isPopupShown">
-        <div class="popup_container">
-            <h4 class="content-subhead">New post</h4>
-Is valid - {{addPostForm.$valid}}
-            <form class="pure-form pure-form-aligned" name="addPostForm" ng-submit="addPostForm.$valid && posts.addPost()" novalidate>
-                <fieldset>
-                    <div class="pure-control-group">
-                        <label>Author</label>
-                        <input ng-model="posts.newPost.author" type="text" placeholder="Author" class="form-field" required>
-                    </div>
-
-                    <div class="pure-control-group">
-                        <label>Avatar</label>
-                        <input ng-model="posts.newPost.avatar" type="text" placeholder="path to image" class="form-field">
-                    </div>
-
-                    <div class="pure-control-group">
-                        <label>Article title</label>
-                        <input  ng-model="posts.newPost.title" type="text" placeholder="title" class="form-field" required>
-                    </div>
-
-                    <div class="pure-control-group">
-                        <label>Labels / tags</label>
-                        <input  ng-model="posts.newPost.labels" placeholder="Enter tags, use comma to separate" class="form-field">
-                    </div>
-
-                    <div class="pure-control-group">
-                        <label>Article message</label>
-                        <textarea required ng-model="posts.newPost.body" id="aligned-foo" type="text" placeholder="Enter something here..." class="form-field"></textarea>
-                    </div>
-
-                    <div class="pure-controls">
-                        <button ng-click="posts.popupAction('hide')" class="pure-button pure-button-secondary">Cancel</button>
-                        <button type="submit" class="pure-button pure-button-primary">Submit</button>
-                    </div>
-                </fieldset>
-            </form>
-
-            <span class="popup_close" ng-click="posts.popupAction('hide')">&#10006;</span>
-        </div>
-
-    </div><!-- /.modal -->
+   <pop-up ng-show="blogPost.isPopupShown"></pop-up>
 
 <!--[if lt IE 9]>
 <script src="../bower_components/es5-shim/es5-shim.js"></script>

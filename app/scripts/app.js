@@ -13,8 +13,24 @@
 (function(){
     var app = angular.module('blog', []);
 
-    app.controller('PostsCtrl', function(){
+    app.directive('blogPost', function(){
+        return {
+          restrict: 'E',
+          templateUrl: 'templates/post.html'
+        };
+    });
+
+    app.directive('popUp', function(){
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/popup.html'
+        };
+    });
+
+    app.controller('BlogCtrl', function(){
         this.items = posts;
+
+        this.isPopupShown = false;
 
         this.newPost = {};
 
@@ -26,19 +42,17 @@
             this.isPopupShown = false;
         };
 
-        this.isPopupShown = false;
-
         this.popupAction = function(action){
             switch (action) {
-                case 'show':
-                    this.isPopupShown = true;
-                    break;
-                case 'hide':
-                    this.isPopupShown = false;
-                    break;
-                default :
-                    return this.isPopupShown;
-            }
+             case 'show':
+                 this.isPopupShown = true;
+             break;
+             case 'hide':
+                 this.isPopupShown = false;
+             break;
+             default :
+             return this.isPopupShown;
+             }
         };
     });
 
