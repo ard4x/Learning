@@ -1,0 +1,15 @@
+/* popup */
+.popup_wrapper {position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: block; background-color: rgba(0,0,0,0.3);}
+    .popup_container {width: 650px; background-color: #fff; border: 3px solid #e5e5e5; border-radius: 3px; box-sizing: border-box; -moz-box-sizing: border-box;
+        box-shadow: 0 1px 3px 1px rgba(0,0,0,0.3); padding: 0 20px 20px; position: relative; margin: 15% auto;}
+    .popup_close {color: #ccc; cursor: pointer; display: block; position: absolute; right: 12px; top: 12px;}
+
+
+.popup_container .form-field {width: 420px;}
+.popup_container textarea {resize: vertical;}
+.popup_container .pure-controls {text-align: right;}
+
+.ng-invalid.ng-dirty {border-color: red!important}
+.nd-valid.ng-dirty {}
+
+
